@@ -5,7 +5,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <graphics\drawable.h>
+#include <graphics/drawable.h>
 
 class GraphicsEngine {
 public:

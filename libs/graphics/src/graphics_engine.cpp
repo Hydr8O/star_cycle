@@ -1,4 +1,4 @@
-#include "graphics_engine.h"
+#include <graphics/graphics_engine.h>
 
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -41,6 +41,7 @@ GraphicsEngine::GraphicsEngine(int width, int height) {
 }
 
 GraphicsEngine::~GraphicsEngine() {
+   m_drawables.clear();
    glfwTerminate();
 }
 

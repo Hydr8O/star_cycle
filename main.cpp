@@ -1,5 +1,5 @@
 
-#include <graphics_engine.h>
+#include <graphics/graphics_engine.h>
 #include <graphics/circle.h>
 #include <iostream>
 
@@ -11,7 +11,6 @@ int main(int /*argc*/, char** /*argv[]*/) {
    while (graphicsEngine.render()) {
       
    }
-
    // glfw: terminate, clearing all previously allocated GLFW resources.
    // ------------------------------------------------------------------
    return 0;

@@ -4,7 +4,7 @@
 #include <vector>
 #include <glad/glad.h>
 
-#include <glm/gtx/transform.hpp >
+#include <glm/gtx/transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 Circle::Circle() {

@@ -4,8 +4,7 @@
 
 class Drawable {
 private:
-    glm::dvec2 m_position;
 public:
-    virtual void draw();
-    void set_position(glm::dvec2 position);
+   glm::dvec3 m_position{0};
+   virtual void draw(glm::dmat4 proj) = 0;
 };

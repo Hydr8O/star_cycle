@@ -31,7 +31,6 @@ struct GLFWScopeGuard {
 
 int main(int /*argc*/, char** /*argv[]*/) {
 
-
    // glfw: initialize and configure
    // ------------------------------
    glfwInit();

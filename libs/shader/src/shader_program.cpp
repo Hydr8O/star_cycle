@@ -1,12 +1,11 @@
 
-#include "ShaderProgram.h"
+#include <shader/shader_program.h>
 
 
 #include <iostream>
 #include <fstream>
 
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 
 void ShaderProgram::loadVertexShaderFromPath(std::string vertexCodePath) {

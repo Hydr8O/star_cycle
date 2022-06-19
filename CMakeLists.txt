@@ -5,7 +5,14 @@ include(CTest)
 enable_testing()
 
 add_executable(star_cycle main.cpp)
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+add_subdirectory(vendor)
+add_subdirectory(libs)
+find_package(glfw3 3.3 REQUIRED)
 include(CPack)
+
+target_include_directories(star_cycle PRIVATE
+    ${CMAKE_SOURCE_DIR}/vendor/glad/include
+    ${CMAKE_SOURCE_DIR}/libs/shader/include
+)
+
+target_link_libraries(star_cycle shader glfw glad)

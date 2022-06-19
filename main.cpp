@@ -1,5 +1,3 @@
-
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -8,12 +6,11 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
-
-#include "ShaderProgram.h"
+#include "paths.h"
+#include <shader/shader_program.h>
 
 #include <iostream>
 #include <vector>
-
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
@@ -32,7 +29,7 @@ void processInput(
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-int main(int /*argc*/, char* /*argv[]*/) {
+int main(int /*argc*/, char** /*argv[]*/) {
 
 
    // glfw: initialize and configure
@@ -72,8 +69,10 @@ int main(int /*argc*/, char* /*argv[]*/) {
 
    // build and compile our shader program
    ShaderProgram shaderProgram{};
-   shaderProgram.loadVertexShaderFromPath("vertex_shader.vert");
-   shaderProgram.loadFragmentShaderFromPath("fragment_shader.frag");
+   std::string vertexShaderPath = "vertex_shader.vert";
+   std::string fragmentShaderPath = "fragment_shader.frag";
+   shaderProgram.loadVertexShaderFromPath(PATH_PREFIX + vertexShaderPath);
+   shaderProgram.loadFragmentShaderFromPath(PATH_PREFIX + fragmentShaderPath);
    shaderProgram.linkShaders();
 
    // set up vertex data (and buffer(s)) and configure vertex attributes

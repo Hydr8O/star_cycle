@@ -29,12 +29,17 @@ void processInput(
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
+struct GLFWScopeGuard {
+   ~GLFWScopeGuard() { glfwTerminate(); }
+};
+
 int main(int /*argc*/, char** /*argv[]*/) {
 
 
    // glfw: initialize and configure
    // ------------------------------
    glfwInit();
+   GLFWScopeGuard scopeGuard{};
    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -48,7 +53,6 @@ int main(int /*argc*/, char** /*argv[]*/) {
    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
    if (window == NULL) {
       std::cout << "Failed to create GLFW window" << std::endl;
-      glfwTerminate();
       return -1;
    }
    glfwMakeContextCurrent(window);
@@ -58,7 +62,6 @@ int main(int /*argc*/, char** /*argv[]*/) {
    // ---------------------------------------
    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
       std::cout << "Failed to initialize GLAD" << std::endl;
-      glfwTerminate();
       return -1;
    }
 
@@ -168,7 +171,6 @@ int main(int /*argc*/, char** /*argv[]*/) {
 
    // glfw: terminate, clearing all previously allocated GLFW resources.
    // ------------------------------------------------------------------
-   glfwTerminate();
    return 0;
 }
 

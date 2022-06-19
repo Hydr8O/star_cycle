@@ -1,1 +1,4 @@
 build
+*.vcxproj*
+x64
+glad.c

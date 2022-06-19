@@ -20,10 +20,6 @@ void framebuffer_size_callback(GLFWwindow* /*window*/, int width, int height) {
    std::cout << width << " " << height << std::endl;
    glViewport(0, 0, width, height);
 }
-void processInput(
-   GLFWwindow* window, int iter, glm::dvec3* camPos, glm::dquat* camOri, int* tesselationLevel,
-   double* camSpeed
-);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -80,15 +76,6 @@ int main(int /*argc*/, char** /*argv[]*/) {
 
    // set up vertex data (and buffer(s)) and configure vertex attributes
    // ------------------------------------------------------------------
-   /*float vertices[] = {
-       -0.5f, -0.5f, 0.0f,  // bottom left
-        0.5f, -0.5f, 0.0f,  // bottom right
-        0.5f,  0.5f, 0.0f,  // top right
-       -0.5f,  0.5f, 0.0f,  // top left
-   };
-   unsigned int indices[] = {  // note that we start from 0!
-      0,1,2,3
-   };*/
 
    std::vector<float> vertexData{
       -0.5, -0.5, 0.,
@@ -98,10 +85,6 @@ int main(int /*argc*/, char** /*argv[]*/) {
    std::vector<int> indices{
       0, 1, 2
    };
-
-#pragma warning( push )
-#pragma warning( disable : 4244 )
-#pragma warning( pop )
    unsigned int VBO, VAO, EBO;
    glGenVertexArrays(1, &VAO);
    glGenBuffers(1, &VBO);
@@ -145,11 +128,7 @@ int main(int /*argc*/, char** /*argv[]*/) {
       // render
 
       // draw our first triangle
-      //glUseProgram (shaderProgram);
       shaderProgram.use();
-
-      //loc = glGetUniformLocation (shaderProgram.getID (), "controlPoints");
-      //glUniform3fv (loc, 16, (const GLfloat*)controlPoints);
 
       glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
       //glDrawArrays(GL_TRIANGLES, 0, 6);
